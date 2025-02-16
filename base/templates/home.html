@@ -1,3 +1,18 @@
 {% include 'navbar.hml' %}
 
 <h1>Home Template</h1>
+
+<div class="home-container">
+    <div>
+        {% include 'base/topics_component .htmI' %}
+    </div> 
+        <h5> {{room_count}} rooms available</h5>
+        <a href="{% url 'create-room' %}">Create Room</a>
+
+        {% include 'base/feed_component.htmi' %}
+    </div>
+    <div>
+        {% include 'base/activity_component.htmI' %}
+    </div>
+</div>
+{% endblock content %}
