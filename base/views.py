@@ -39,6 +39,22 @@ def loginpage(request):
                     )
 
 @login_required(Login_url='login')
+def createRoom(Request):
+    form = RoomForm()
+
+    if request.method == 'POST':
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'base/room_form.html', context)
+
+
+@login_required(Login_url='login')
 def deleteMessage(request, pk):
     message = message.objects.get(id=pk)
     if request.user != message.user:
@@ -48,4 +64,3 @@ def deleteMessage(request, pk):
         message.delete()
         return redirect('home')
         return render(request, 'base/delete.html', {'obj' : message})
-        
