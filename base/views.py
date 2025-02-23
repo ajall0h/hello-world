@@ -64,3 +64,13 @@ def deleteMessage(request, pk):
         message.delete()
         return redirect('home')
         return render(request, 'base/delete.html', {'obj' : message})
+
+
+def topicsPage(request):
+    q = request. GET.get('q') if request .GET.get ('q') != None else ''
+    topics = Topic.objects.filter (name__icontains=q)
+    return render (request, 'base/topics.htmI', {'topics': topics})
+    
+def activityPage(request):
+    room_messages = Message.objects.all ()
+    return render (request, 'base/activity. html', {})
