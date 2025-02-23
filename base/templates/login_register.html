@@ -1,19 +1,48 @@
-{% extends 'main.html' %}
+{%xtends 'main.htm]'%}
 
-{% block content %}
+{%lock content %} 
+n class="auth layout">
 
-<div> 
-    <form method= "POST" action="">
-        {% csrf token %}
-
-        <label>Username:</label>
-        <input type="text" name="username" placeholder="Enter Username" />
-
-        <label>Password:</label>
-        <input type="password" name="password" placeholder="Enter Password" />
-
-        <input type="submit" value="Login" /> 
-    </form>
+{%if page == 'login' %} 
+<div class="container"> 
+<div>
+{%else %} 
+<div class="container"> 
+    <div class="layout__box">
+        <div class="layout__boxHeader">
+            <div class="layout__boxTitle">
+                <h3>Register</h3> 
+    </div>
 </div>
+<div class= "layout _body"> 
+    <h2 class="auth__tagline">Find your study partner</h2>
+    <form class="form" action="" method="POST"> 
+        {% csrf_ token %}
 
-{% endblock content %}
+        {% for field in form %} 
+        <div class="form__group form__group"> 
+            <label for="room_name">{{field. label}}7</label> 
+            {{field}} 
+        </div>
+        {% endfor %}
+
+        <button class="btn btn--main" type="submit">
+        <svg version="1.1" xmIns="http: //www.w3.org/2000/svg" width="32" height="32">
+        <title>lock</title> 
+        <path
+        d="M27 12h-1v-2c0-5.514-4.486-10-10-105-10 4.486-10 10v2h-1c-0.553 0-1 0.447-1">
+        </path>
+        <path
+        d= "M15 21.694V4.306h2V-4.306c0.587-0.348 1-0.961 1-1.694 0-1.105-0.895-2-2-25">
+        </path>
+
+        </Svg>
+        Register
+
+        <div class="auth action"> 
+            <p>already signed up yet?</p>
+            <a href="{% url 'login' %}" class="btn btn--link">Sign Up</a>
+        </div>
+        
+
+{%endblock content%}
